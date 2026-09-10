@@ -1,0 +1,27 @@
+# Render deploy settings for the fantasy dashboard.
+# On Render: New + -> Blueprint, point it at this repo, and it reads this file.
+services:
+  - type: web
+    name: my-fantasy-matchups
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      # These are set to sync:false so Render asks YOU to type each value in
+      # its secure dashboard — your ESPN cookies and password never live in
+      # the code or the repo.
+      - key: LOGIN_USER
+        sync: false
+      - key: LOGIN_PASSWORD
+        sync: false
+      - key: SEASON
+        sync: false
+      - key: SLEEPER_USERNAME
+        sync: false
+      - key: ESPN_LEAGUE_IDS
+        sync: false
+      - key: ESPN_SWID
+        sync: false
+      - key: ESPN_S2
+        sync: false
